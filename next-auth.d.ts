@@ -13,6 +13,7 @@ declare module "next-auth" {
         };
         accessToken?: string;
         refreshToken?: string;
+        expiresAt?: string;
         error?: AuthError; // If any error occurs during authentication
     }
 
@@ -20,6 +21,7 @@ declare module "next-auth" {
         access_token?: string;
         refresh_token?: string;
         expires_at?: number; // Timestamp when the access token expires
+        expiresAt: string;
         error?: string; // For error handling in token lifecycle
         user?: {
             id: string;

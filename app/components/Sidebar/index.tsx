@@ -1,16 +1,11 @@
-// 'use client';
-import { signOut } from '@/auth';
 import Link from 'next/link';
+import { handleLogoutAction } from './actions/logoutAction';
 
 const Sidebar = () => {
-    const handleLogout = async () => {
-        'use server';
-        await signOut();
-    }
     return (
         <div className="h-screen flex flex-col bg-gray-800 text-white w-64 p-5">
             <div className="mb-10">
-                <h1 className="text-3xl font-bold">NextAuth App</h1>
+                <h1 className="text-3xl font-bold">Dashboard</h1>
             </div>
 
             <nav className="flex-grow">
@@ -29,7 +24,7 @@ const Sidebar = () => {
 
             <div className="mt-auto">
                 <button
-                    onClick={handleLogout}
+                    onClick={handleLogoutAction}
                     className="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition duration-200 ease-in-out"
                 >
                     🚪 Logout
