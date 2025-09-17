@@ -53,9 +53,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center space-x-3">
-                            Session expires in {new Date(data?.expiresAt as string).toLocaleString()}
-                        </div>
+
                     </header>
                     {children}
                 </div>
