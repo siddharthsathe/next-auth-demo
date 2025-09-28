@@ -12,13 +12,13 @@ const providers: Provider[] = [
         },
         authorize(credentials) {
             // TODO: validate credentials from db
-            // fail validation 
-            if (credentials.password !== "password") return null
+            // fail validation for admin user
+            if (credentials.email === "admin@nextauth.com" && credentials.password !== "password@365") return null;
             // mock user data
             return {
                 id: "1",
                 name: "John Doe12",
-                email: "admin@nextauth.com",
+                email: String(credentials.email).toLowerCase(),
                 accessToken: "1234567890",
                 expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString()
             }

@@ -4,7 +4,6 @@ import Sidebar from "../Sidebar";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { AuthError } from "@/app/types";
-import Image from "next/image";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -43,8 +42,8 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                             <div className="flex items-center space-x-3">
                                 <span className="text-gray-700 font-medium">{data?.user.name}</span>
                                 <div className="w-8 h-8 rounded-full overflow-hidden">
-                                    <Image
-                                        src={data?.user.image || '/default-avatar.png'}
+                                    <img
+                                        src={data?.user.image || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoP9pWPIBel19gkM0oVleNVCM87xkNOdBlWA&s'}
                                         alt="Profile"
                                         className="w-full h-full object-cover"
                                     />
