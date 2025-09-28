@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { AuthError } from "@/app/types";
+import Image from "next/image";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -18,13 +19,10 @@ const geistMono = Geist_Mono({
 export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     const { data, status } = useSession({
         required: true,
-        onUnauthenticated: () => {
-            redirect('/signin');
-        }
     });
 
     if (data?.error === AuthError.AccessTokenExpired) {
-        redirect('/signin');
+        redirect('/signin?error=login');
     }
 
     if (status === 'loading') {
@@ -45,7 +43,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                             <div className="flex items-center space-x-3">
                                 <span className="text-gray-700 font-medium">{data?.user.name}</span>
                                 <div className="w-8 h-8 rounded-full overflow-hidden">
-                                    <img
+                                    <Image
                                         src={data?.user.image || '/default-avatar.png'}
                                         alt="Profile"
                                         className="w-full h-full object-cover"

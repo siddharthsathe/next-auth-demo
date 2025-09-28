@@ -12,7 +12,7 @@ const Sidebar = () => {
                 <ul>
                     <li className="mb-4">
                         <Link
-                            href="/dashboard/employees"
+                            href="/admin/employees"
                             className="flex items-center px-4 py-2 hover:bg-gray-700 rounded-lg transition duration-200 ease-in-out"
                         >
                             <span className="mr-3 text-lg">🏠</span>

@@ -5,12 +5,14 @@ import { AuthError } from "next-auth"
 const SIGNIN_ERROR_URL = "/error"
 
 export default async function SignInPage(props: {
-    searchParams: { callbackUrl: string | undefined }
+    searchParams: Promise<{ callbackUrl: string | undefined }>
 }) {
     const user = await auth();
     if (user?.user && !user.error) {
-        redirect("/dashboard/employees");
+        redirect("/admin/employees");
     }
+
+    const searchParams = await props.searchParams;
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -102,7 +104,7 @@ export default async function SignInPage(props: {
                                     "use server"
                                     try {
                                         await signIn(provider.id, {
-                                            redirectTo: props.searchParams?.callbackUrl ?? "",
+                                            redirectTo: searchParams?.callbackUrl ?? "",
                                         })
                                     } catch (error) {
                                         if (error instanceof AuthError) {

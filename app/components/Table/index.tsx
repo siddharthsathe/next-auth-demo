@@ -1,5 +1,3 @@
-// components/Table.tsx
-
 import React from 'react';
 
 // Define the type for a single row of data
@@ -10,7 +8,6 @@ interface RowData {
     city: string;
 }
 
-// Define the Table component props (optional, since we're using static data)
 interface TableProps {
     data: RowData[];
 }
