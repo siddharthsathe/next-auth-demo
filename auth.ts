@@ -17,7 +17,7 @@ const providers: Provider[] = [
             // mock user data
             return {
                 id: "1",
-                name: "John Doe12",
+                name: String(credentials.email).split("@")[0],
                 email: String(credentials.email).toLowerCase(),
                 accessToken: "1234567890",
                 expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString()
